@@ -1,4 +1,4 @@
-import { Control, useController, useFieldArray } from "react-hook-form";
+import { Control, useFieldArray } from "react-hook-form";
 import { cn } from "../../../lib/utils";
 import StepInfo from "../../StepInfo";
 

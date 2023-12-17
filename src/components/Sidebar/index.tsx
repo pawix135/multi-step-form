@@ -1,5 +1,4 @@
 import classNames from "classnames";
-import bgSidebar from "/bg-sidebar-desktop.svg";
 
 const steps = ["YOUR INFO", "SELECT PLAN", "ADD-ONS", "SUMMARY"];
 

@@ -1,4 +1,4 @@
-import { Control, useFormContext } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 import StepInfo from "../../StepInfo";
 import { cn } from "../../../lib/utils";
 import { useMemo } from "react";

@@ -1,6 +1,5 @@
 import classNames from "classnames";
 import {
-  Control,
   FieldError,
   FieldPath,
   UseControllerProps,

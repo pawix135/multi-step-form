@@ -1,4 +1,4 @@
-import { Control, UseControllerProps, useController } from "react-hook-form";
+import { Control, useController } from "react-hook-form";
 import StepInfo from "../../StepInfo";
 import { Switch } from "../../Switch";
 import iconArcade from "../../../assets/icon-arcade.svg";
