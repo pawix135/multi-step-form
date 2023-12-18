@@ -7,8 +7,8 @@ interface Props {
 }
 const Sidebar: React.FC<Props> = ({ currentStep }) => {
   return (
-    <div className="col-span-1 bg-sidebar-mobile md:bg-sidebar-desktop bg-no-repeat bg-cover px-5 py-10 rounded-lg">
-      <div className="grid grid-flow-col grid-cols-1 grid-rows-4 gap-5">
+    <div className="md:col-span-1 bg-sidebar-mobile md:bg-sidebar-desktop bg-no-repeat bg-cover md:px-5 md:py-10 md:rounded-lg md:w-[250px] md:h-auto h-[200px]">
+      <div className="flex flex-row justify-center mt-5 md:grid md:grid-flow-col md:grid-cols-1 md:grid-rows-4 gap-5 md:mt-0">
         {steps.map((step, index) => {
           let stepNumber = index + 1;
           return (
@@ -18,7 +18,7 @@ const Sidebar: React.FC<Props> = ({ currentStep }) => {
             >
               <span
                 className={classNames(
-                  "flex items-center justify-center rounded-full font-bold w-[30px] h-[30px]",
+                  "flex items-center justify-center rounded-full font-bold md:w-[30px] md:h-[30px] w-[50px] h-[50px]",
                   {
                     "border-2 border-white text-white": currentStep !== index,
                     "bg-pastel-blue text-marine-blue": currentStep === index,
@@ -27,7 +27,7 @@ const Sidebar: React.FC<Props> = ({ currentStep }) => {
               >
                 {stepNumber}
               </span>
-              <div className="flex flex-col gap-1 text-white">
+              <div className="hidden md:flex flex-col gap-1 text-white">
                 <span>STEP {stepNumber}</span>
                 <span className="font-bold">{step}</span>
               </div>

@@ -29,7 +29,7 @@ const AddOnsStep: React.FC<Props> = ({ control, step, billing }) => {
             <div
               key={`addon-${index}`}
               className={cn(
-                "flex flex-row gap-5 items-center border-2 p-5 rounded-lg",
+                "flex flex-row gap-5 items-center border-2 p-5 rounded-md",
                 {
                   "border-purplish-blue bg-purplish-blue/5": addon.selected,
                 }
@@ -41,17 +41,18 @@ const AddOnsStep: React.FC<Props> = ({ control, step, billing }) => {
                 onChange={(e) => {
                   update(index, { ...addon, selected: e.target.checked });
                 }}
+                className="custom-checkbox"
               />
-              <div>
+              <label>
                 <h3 className="font-bold">{addon.type}</h3>
-                <span>
+                <span className="text-cool-gray ">
                   {
                     addonDescription[
                       addon.type as keyof typeof addonDescription
                     ]
                   }
                 </span>
-              </div>
+              </label>
               <span className="ml-auto font-semibold text-purplish-blue/80">
                 +${billing ? addon.price * 10 : addon.price}
                 {billing ? "/yr" : "/mo"}

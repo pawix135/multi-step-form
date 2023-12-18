@@ -17,6 +17,13 @@ const prices = {
   pro: 15,
 };
 
+const plans: { img: string; billing: boolean; price: number; type: string }[] =
+  [
+    { billing: false, price: 9, type: "arcade", img: iconArcade },
+    { billing: false, price: 12, type: "advanced", img: iconAdvanced },
+    { billing: false, price: 15, type: "pro", img: iconPro },
+  ];
+
 const SelectPlanStep: React.FC<Props> = ({ control, step }) => {
   let { field: plan } = useController<FormProps, "plan">({
     control,
@@ -37,64 +44,37 @@ const SelectPlanStep: React.FC<Props> = ({ control, step }) => {
         title="Select your plan"
         description="You have the option of monthly or yearly billing."
       />
-      <div className="grid grid-flow-row grid-cols-3 grid-rows-1 gap-10">
-        <button
-          className={cn(
-            "flex flex-col border-2 hover:border-purplish-blue/50 hover:border-2 hover:bg-purplish-blue/10-gray p-5 rounded-xl",
-            {
-              "bg-purplish-blue/10 border-purplish-blue/50":
-                plan.value.type == "arcade",
-            }
-          )}
-          type="button"
-          onClick={() => changePlan("arcade", 9)}
-        >
-          <img src={iconArcade} alt="" />
-          <h3 className="mt-16 font-bold text-">Arcade</h3>
-          <span className="text-cool-gray">
-            {plan.value.billing === false
-              ? `$${prices["arcade"]}/mo`
-              : `$${prices["arcade"] * 10}/yr`}
-          </span>
-        </button>
-        <button
-          className={cn(
-            "flex flex-col border-2 hover:border-purplish-blue/50 hover:border-2 hover:bg-purplish-blue/10 p-5 rounded-xl",
-            {
-              "bg-purplish-blue/10 border-purplish-blue/50":
-                plan.value.type == "advanced",
-            }
-          )}
-          type="button"
-          onClick={() => changePlan("advanced", 12)}
-        >
-          <img src={iconAdvanced} alt="" />
-          <h3 className="mt-16 font-bold text-">Advanced</h3>
-          <span className="text-cool-gray">
-            {plan.value.billing === false
-              ? `$${prices["advanced"]}/mo`
-              : `$${prices["advanced"] * 10}/yr`}
-          </span>
-        </button>
-        <button
-          className={cn(
-            "flex flex-col border-2 hover:border-purplish-blue/50 hover:border-2 hover:bg-purplish-blue/10 p-5 rounded-xl",
-            {
-              "bg-purplish-blue/10 border-purplish-blue/50":
-                plan.value.type == "pro",
-            }
-          )}
-          type="button"
-          onClick={() => changePlan("pro", prices["pro"])}
-        >
-          <img src={iconPro} alt="" />
-          <h3 className="mt-16 font-bold text-">Pro</h3>
-          <span className="text-cool-gray">
-            {plan.value.billing === false
-              ? `$${prices["pro"]}/mo`
-              : `$${prices["pro"] * 10}/yr`}
-          </span>
-        </button>
+      <div className="grid grid-flow-col grid-cols-1 grid-rows-3 md:grid-flow-row md:grid-cols-3 md:grid-rows-1 gap-5 md:gap-10">
+        {plans.map((p, i) => {
+          return (
+            <button
+              className={cn(
+                "flex items-center md:items-start gap-5 md:gap-0 md:flex-col border-2 hover:border-purplish-blue/50 hover:border-2 hover:bg-purplish-blue/10-gray p-5 rounded-xl max-h-[100px] md:max-h-none",
+                {
+                  "bg-purplish-blue/10 border-purplish-blue/50":
+                    plan.value.type == p.type,
+                }
+              )}
+              type="button"
+              onClick={() => changePlan(p.type as any, p.price)}
+            >
+              <img src={p.img} alt="" />
+              <div className="flex flex-col">
+                <h3 className="md:mt-16 font-bold capitalize text-left">
+                  {p.type}
+                </h3>
+                <span className="text-cool-gray text-left">
+                  {plan.value.billing === false
+                    ? `$${p.price}/mo`
+                    : `$${p.price * 10}/yr`}
+                </span>
+                {plan.value.billing && (
+                  <span className="text-marine-blue">2 months free</span>
+                )}
+              </div>
+            </button>
+          );
+        })}
       </div>
       <div className="flex flex-row gap-5 items-center bg-magnolia justify-center py-4 mt-10">
         <span

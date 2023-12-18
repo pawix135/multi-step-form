@@ -42,7 +42,7 @@ const SummaryStep: React.FC<Props> = ({ step, goBackToPlan }) => {
             </h3>
             <button
               type="button"
-              className="underline font-semibold text-light-gray"
+              className="underline font-normal text-cool-gray hover:text-purplish-blue"
               onClick={goBackToPlan}
             >
               Change
@@ -65,10 +65,10 @@ const SummaryStep: React.FC<Props> = ({ step, goBackToPlan }) => {
                   key={`addon-total-${index}`}
                   className="flex flex-row justify-between"
                 >
-                  <span className="text-light-gray font-semibold">
+                  <span className="text-cool-gray/50 font-semibold">
                     {addon.type}
                   </span>
-                  <span className="font-semibold text-marine-blue/50">
+                  <span className="font-semibold text-marine-blue/70">
                     +{calcPrice}/${slugPlanType}
                   </span>
                 </div>
@@ -76,7 +76,7 @@ const SummaryStep: React.FC<Props> = ({ step, goBackToPlan }) => {
             })}
         </div>
       </div>
-      <p className="flex flex-row justify-between mt-5 text-light-gray">
+      <p className="flex flex-row justify-between font-semibold mt-5 text-cool-gray/50 pl-5">
         Total (per {values.plan.billing ? "year" : "month"})
         <span className="font-bold text-xl text-purplish-blue">
           +{calculateTotal}/{slugPlanType}
