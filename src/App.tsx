@@ -87,7 +87,7 @@ function App() {
               </form>
             </FormProvider>
           )}
-          {showThankYou && <ThankYouStep step={step} />}
+          {showThankYou && <ThankYouStep />}
           {!showThankYou && (
             <div className="md:flex flex-row mt-[100px] hidden">
               {step > 0 && step < 4 && (

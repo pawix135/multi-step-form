@@ -48,6 +48,7 @@ const SelectPlanStep: React.FC<Props> = ({ control, step }) => {
         {plans.map((p, i) => {
           return (
             <button
+              key={`plan-${i}`}
               className={cn(
                 "flex items-center md:items-start gap-5 md:gap-0 md:flex-col border-2 hover:border-purplish-blue/50 hover:border-2 hover:bg-purplish-blue/10-gray p-5 rounded-xl max-h-[100px] md:max-h-none",
                 {
